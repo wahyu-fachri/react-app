@@ -3,9 +3,21 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'npm start'
+        sh '''pipeline {
+  agent any
+  stages {
+    stage(\'Build\') {
+      agent any
+      steps {
+        sh \'\'\'npm install
+\'\'\'
       }
     }
 
   }
-}
+}'''
+        }
+      }
+
+    }
+  }
